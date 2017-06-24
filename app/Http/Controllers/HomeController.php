@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\FlickerService;
 
 class HomeController extends Controller
 {
+    /*
+     * Thr Flicker Service
+     *
+     * @var FlickerService
+     */
+    public $flickerService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(FlickerService $flickerService)
     {
         $this->middleware('auth');
+        $this->flickerService = $flickerService;
     }
 
     /**
