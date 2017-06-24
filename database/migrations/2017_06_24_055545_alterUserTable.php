@@ -20,7 +20,6 @@ class AlterUserTable extends Migration
             }
             $table->string('first_name')->after('id')->default(null);
             $table->string('last_name')->after('first_name')->default(null);
-            $table->string('role')->after('last_name')->default(2);
             
         });
     }
@@ -35,7 +34,6 @@ class AlterUserTable extends Migration
         Schema::table('users', function(Blueprint $table) {
             $table->dropColumn('first_name');
             $table->dropColumn('last_name');
-            $table->dropColumn('role');
         });
     }
 }
