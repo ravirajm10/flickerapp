@@ -3,12 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">
+                    @foreach(config('constants.sizeArray') as $key => $value)
+                        <button type="button" class= "{{ $key != $size ?  'btn btn-default' : 'btn btn-primary'  }}" id="{{$key}}">{{$value}}</button>
+                    @endforeach
+                </div>
 
                 <div class="panel-body">
-                    You are logged in!
+                     @include('partials.photo-list');               
                 </div>
             </div>
         </div>

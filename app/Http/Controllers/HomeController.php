@@ -32,6 +32,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $recentPhotos = $this->flickerService->getRecentPhotos();
+        return view('home', ['recentphotos' => $recentPhotos, 'size' => 'o']);
+    }
+
+    /*
+     * Get the photos of respective size
+     *
+     * @param Obj $request
+     * @return string $photoList
+     */
+    public function photoListBySize(Request $request) {
+        $recentPhotos = $this->flickerService->getRecentPhotos();
+
+        return view('partials.photo-list', ['recentphotos' => $recentPhotos, 'size' => $request->get('sizeType')]);
     }
 }
